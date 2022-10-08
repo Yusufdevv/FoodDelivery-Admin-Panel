@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 ThemeData theme() {
   return ThemeData(
-      scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+      scaffoldBackgroundColor:  Colors.white,
       colorScheme: const ColorScheme(
         primary: Color(0xFFFE3C5B),
         secondary: Color(0xFFe84545),
-        background: Color(0xFFFFFFFF),
+        background: Color(0xFFF5F5F5),
         surface: Color(0xFFFFFFFF),
-        error: Color(0x000000),
+        error: Color(0xFFFFFFFF),
         brightness: Brightness.light,
         onPrimary: Color(0xFFFFFFFF),
         onSecondary: Color(0xFFFFFFFF),

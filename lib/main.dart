@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_admin_panel/config/theme.dart';
-import 'package:food_delivery_admin_panel/presentation/screens/menu/menu_screen.dart';
 import 'package:food_delivery_admin_panel/presentation/screens/screens.dart';
 
 void main() {

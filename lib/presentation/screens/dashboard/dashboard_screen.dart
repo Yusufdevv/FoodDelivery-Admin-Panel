@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/widgets.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -10,7 +9,9 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar:  AppBar(
+        title: const Text('Dashboard Screen'),
+      ),
       body: Container(),
     );
   }

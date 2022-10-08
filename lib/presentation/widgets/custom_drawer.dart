@@ -29,7 +29,7 @@ class CustomDrawer extends StatelessWidget {
               decoration:
                   BoxDecoration(color: Theme.of(context).colorScheme.primary),
               child: Text(
-                'Food Delivery Admin Panel',
+                'Food Delivery Admin',
                 style: Theme.of(context)
                     .textTheme
                     .headline2!

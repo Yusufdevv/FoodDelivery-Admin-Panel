@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/widgets.dart';
-
 class OpeningHoursScreen extends StatelessWidget {
   const OpeningHoursScreen({super.key});
 
@@ -10,10 +8,10 @@ class OpeningHoursScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: AppBar(
+        title: const Text('Opening Hours Screen'),
+      ),
       body: Container(),
     );
   }
 }
-
-

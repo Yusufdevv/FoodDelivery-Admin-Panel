@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(
-        'Food Delivery Admin Panel',
+        'Food Delivery Admin',
         style: Theme.of(context)
             .textTheme
             .headline2!
