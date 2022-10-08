@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/widgets.dart';
 
 class LogoutScreen extends StatelessWidget {
   const LogoutScreen({super.key});
@@ -10,7 +9,9 @@ class LogoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar:  AppBar(
+        title: const Text('Logout Screen'),
+      ),
       body: Container(),
     );
   }
