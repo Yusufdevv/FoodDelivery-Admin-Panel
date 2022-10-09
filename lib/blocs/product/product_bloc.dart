@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:food_delivery_admin_panel/models/models.dart';
+import '../../models/models.dart';
 
 import '../category/category_bloc.dart';
 

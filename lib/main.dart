@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery_admin_panel/blocs/category/category_bloc.dart';
-import 'package:food_delivery_admin_panel/blocs/product/product_bloc.dart';
-import 'package:food_delivery_admin_panel/config/theme.dart';
-import 'package:food_delivery_admin_panel/models/models.dart';
-import 'package:food_delivery_admin_panel/presentation/screens/screens.dart';
+import 'blocs/category/category_bloc.dart';
+import 'blocs/product/product_bloc.dart';
+import 'config/theme.dart';
+import 'models/models.dart';
+import 'presentation/screens/screens.dart';
 
 void main() {
   runApp(const MyApp());
