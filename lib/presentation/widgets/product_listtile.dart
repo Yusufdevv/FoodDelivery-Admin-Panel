@@ -15,7 +15,6 @@ class ProductListTile extends StatelessWidget {
       title: Text(product.name, style: Theme.of(context).textTheme.headline6),
       subtitle: Text(product.description,
           style: Theme.of(context).textTheme.headline5),
-      trailing: const Icon(Icons.menu),
     );
   }
 }
