@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery_admin_panel/config/responsive.dart';
-import 'package:food_delivery_admin_panel/models/models.dart';
+import '../../../config/responsive.dart';
+import '../../../models/models.dart';
 
 import '../../../blocs/category/category_bloc.dart';
 import '../../../blocs/product/product_bloc.dart';
