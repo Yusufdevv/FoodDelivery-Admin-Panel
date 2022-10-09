@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery_admin_panel/config/responsive.dart';
 import 'package:food_delivery_admin_panel/models/models.dart';
 
+import '../../../blocs/category/category_bloc.dart';
+import '../../../blocs/product/product_bloc.dart';
 import '../../widgets/widgets.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -56,6 +59,7 @@ class MenuScreen extends StatelessWidget {
                               maxHeight: 1000,
                             ),
                             child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Expanded(
                                   child: _buildCategories(context),
@@ -107,14 +111,51 @@ class MenuScreen extends StatelessWidget {
       color: Theme.of(context).colorScheme.background,
       padding: const EdgeInsets.all(20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text('Categories', style: Theme.of(context).textTheme.headline4),
           const SizedBox(height: 20),
-          ...Category.categories.map((category) {
-            return CategoryListTile(
-              category: category,
-            );
-          }).toList(),
+          BlocBuilder<CategoryBloc, CategoryState>(
+            builder: (context, state) {
+              if (state is CategoryLoading) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                );
+              }
+              if (state is CategoryLoaded) {
+                return ReorderableListView(
+                  shrinkWrap: true,
+                  children: [
+                    for (int index = 0;
+                        index < state.categories.length;
+                        index++,)
+                      CategoryListTile(
+                        category: state.categories[index],
+                        onTap: () {
+                          context.read<CategoryBloc>().add(
+                                SelectCategory(state.categories[index]),
+                              );
+                        },
+                        key: ValueKey(
+                          state.categories[index].id,
+                        ),
+                      ),
+                  ],
+                  onReorder: (oldIndex, newIndex) {
+                    context.read<CategoryBloc>().add(
+                          SortCategories(
+                              oldIndex: oldIndex, newIndex: newIndex),
+                        );
+                  },
+                );
+              } else {
+                return const Text("Something went wrong.");
+              }
+            },
+          )
         ],
       ),
     );
@@ -127,10 +168,37 @@ class MenuScreen extends StatelessWidget {
       child: Column(
         children: [
           Text('Products', style: Theme.of(context).textTheme.headline4),
-          const SizedBox(height: 20),
-          ...Product.products.map((product) {
-            return ProductListTile(product: product);
-          }).toList(),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                );
+              }
+              if (state is ProductLoaded) {
+                return ReorderableListView(
+                  shrinkWrap: true,
+                  children: [
+                    for (int index = 0; index < state.products.length; index++,)
+                      ProductListTile(
+                        product: state.products[index],
+                        key: ValueKey(
+                          state.products[index].id,
+                        ),
+                      )
+                  ],
+                  onReorder: (oldIndex, newIndex) {
+                    context.read<ProductBloc>().add(
+                        SortProducts(oldIndex: oldIndex, newIndex: newIndex));
+                  },
+                );
+              } else {
+                return const Text("Something went wrong.");
+              }
+            },
+          )
         ],
       ),
     );
